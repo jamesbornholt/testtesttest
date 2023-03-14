@@ -1,0 +1,29 @@
+on:
+  pull_request_target
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+        persist-credentials: false
+    - name: Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: arn:aws:iam::898783847255:role/GithubActionsRole
+        aws-region: us-west-2
+    - name: Who am I?
+      run: |
+        aws sts get-caller-identity
+    - name: And what do I see?
+      run: |
+        cat README.md
+
