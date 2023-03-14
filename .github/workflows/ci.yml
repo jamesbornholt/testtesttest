@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: Wait for approval
       environment: tests
-      runs: |
+      run: |
         echo "Waiting for approval"
     - name: Checkout
       uses: actions/checkout@v3
