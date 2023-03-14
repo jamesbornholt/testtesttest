@@ -9,6 +9,8 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     steps:
+    - name: Wait for approval
+      environment: tests
     - name: Checkout
       uses: actions/checkout@v3
       with:
