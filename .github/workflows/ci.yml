@@ -3,7 +3,7 @@ on: [pull_request, push]
 jobs:
   test:
     name: Tests
-    environment: tests
+    # environment: tests
     runs-on: ubuntu-latest
     permissions:
       id-token: write
