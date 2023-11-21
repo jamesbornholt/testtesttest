@@ -22,4 +22,7 @@ jobs:
     - name: And what do I see?
       run: |
         cat README.md
+    - name: What about the variables?
+      run: |
+        echo "The value of S3_BUCKET is `${{ vars.S3_BUCKET }}`"
 
