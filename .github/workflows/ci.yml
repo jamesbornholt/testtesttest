@@ -1,4 +1,8 @@
-on: [pull_request, push]
+on:
+  pull_request_target:
+    branches: [main]
+  push:
+    branches: [main, 'ci/*']
 
 jobs:
   test:
@@ -11,6 +15,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+        persist-credentials: false
     - name: Credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
